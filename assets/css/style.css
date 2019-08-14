@@ -1,0 +1,15 @@
+h2 {
+    text-align: center;
+}
+
+.block div {
+    background: burlywood;
+    border: 1px solid black;
+    width: 123px;
+    height: 100px;
+    float: left;
+}
+
+.hide {
+    display: none;
+}
