@@ -16,6 +16,8 @@ function decreaseTime() {
 var interval = setInterval(decreaseTime, 1 * 1000);
 
 var openedCards = [];
+var first;
+var second;
 
 $('.imgContainer').on('click', function() {
     var $img = $(this).children().eq(0);
@@ -51,6 +53,11 @@ $('.imgContainer').on('click', function() {
         openedCards[1].classList.add("match", "disabled");
         openedCards[0].classList.remove("show", "open");
         openCards = [];
+    }
+
+    function unmatched() {
+        opened[0].classList.add("unmatched");
+        opened[1].classList.add("unmatched");
     }
 
     // } else if (first != second) {
