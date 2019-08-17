@@ -17,7 +17,7 @@
     <h3>Timer: <span id="timer"></span></h3>
     <h3>Score: <span id="score"></span></h3>
 
-    <h3 id="h2UserNameGoesHere" class="hide">How fast you can get to match those, <span id="userNameGoesHere"></span>?</h3>
+    <h3 id="h2UserNameGoesHere" class="hide">How fast you can get to match 6 pairs, <span id="userNameGoesHere"></span>?</h3>
 
     <form id="formName">
         <lable>Username</lable>
@@ -102,29 +102,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-        var firebaseConfig = {
-            apiKey: "AIzaSyBIhWAbx75eQKlBdJrHjhrWaj6Jzk4OvXo",
-            authDomain: "project-f384a.firebaseapp.com",
-            databaseURL: "https://project-f384a.firebaseio.com",
-            projectId: "project-f384a",
-            storageBucket: "",
-            messagingSenderId: "554667680468",
-            appId: "1:554667680468:web:6ae2bccf17864595"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.database()
-        var formName;
-
-        function pushName() {
-            formName = $("#userName").val()
-            db.ref().push({
-                name: formName
-            })
-        }
-        $(document).on("click", "#btnSubmit", function() {
-            pushName()
-        })
     </script>
 
     <script src="assets/javascript/game.js"></script>

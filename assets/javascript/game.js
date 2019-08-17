@@ -1,3 +1,31 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBIhWAbx75eQKlBdJrHjhrWaj6Jzk4OvXo",
+    authDomain: "project-f384a.firebaseapp.com",
+    databaseURL: "https://project-f384a.firebaseio.com",
+    projectId: "project-f384a",
+    storageBucket: "",
+    messagingSenderId: "554667680468",
+    appId: "1:554667680468:web:6ae2bccf17864595"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.database()
+var formName;
+
+function pushName() {
+    formName = $("#userName").val();
+    score = $("#score").text();
+    db.ref().push({
+        name: formName,
+        score: score,
+    })
+}
+// $(document).on("click", "#btnSubmit", function() {
+// pushName()
+
+// })
+
+
 // // Firebase watcher .on("child_added"
 // database.ref().orderByChild("counter").on("child_added", function(snapshot, prevChildKey) {
 //     // storing the snapshot.val() in a variable for convenience
@@ -32,6 +60,8 @@ var counter = 30;
 var $span = $('#timer');
 var alertedScore = false;
 
+var interval;
+
 $span.text(counter);
 
 function decreaseTime() {
@@ -46,10 +76,9 @@ function decreaseTime() {
     if (counter == -1) {
         $span.text('Time is up');
         clearInterval(interval);
+        pushName();
     }
 }
-
-var interval = setInterval(decreaseTime, 1 * 1000);
 
 // The function to ask their name;
 var userName;
@@ -62,6 +91,7 @@ $('button').on('click', function() {
     // Input the user names;
     userName = $('#userName').val();
 
+    interval = setInterval(decreaseTime, 1 * 1000);
     // Different Levels;
     var level = $('#level').val()
     console.log(level)
@@ -194,9 +224,8 @@ $(document).on('click', '.imgContainer', function() {
                     // Position to win the game;
                     if ((score == pairsToWin) && (alertedScore == false)) {
 
-                        alert('Your score is ' + score);
                         alertedScore = true;
-
+                        pushName();
                         // Let the timer stops;
                         clearInterval(interval);
                     }
