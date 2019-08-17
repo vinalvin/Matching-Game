@@ -76,22 +76,30 @@ $('button').on('click', function() {
         cols = 5;
     }
 
-    var imageUrls = [
-        'https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp',
-        'https://media2.giphy.com/media/UtvkbCvOJCJtC/200w.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200w.webp',
-        'https://media2.giphy.com/media/k8kA7AOLFVohq/200.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200.webp',
-        'https://media1.giphy.com/media/cQz5MLlnP5rfa/200.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200.webp',
-        'https://media3.giphy.com/media/9MraLzmkWiZqM/200w.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200w.webp',
-        'https://media3.giphy.com/media/3ov9k4e03yTNRWTgYM/200w.webp?cid=790b7611fc7ad1db280bdc6f9bb012ccc148ab3e0adda710&rid=200w.webp'
-    ];
+    // var imageUrls = [
+    //     'https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp',
+    //     'https://media2.giphy.com/media/UtvkbCvOJCJtC/200w.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200w.webp',
+    //     'https://media2.giphy.com/media/k8kA7AOLFVohq/200.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200.webp',
+    //     'https://media1.giphy.com/media/cQz5MLlnP5rfa/200.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200.webp',
+    //     'https://media3.giphy.com/media/9MraLzmkWiZqM/200w.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200w.webp',
+    //     'https://media3.giphy.com/media/3ov9k4e03yTNRWTgYM/200w.webp?cid=790b7611fc7ad1db280bdc6f9bb012ccc148ab3e0adda710&rid=200w.webp'
+    // ];
+    var imageUrls = 'https://api.giphy.com/v1/gifs/random?api_key=N0CBgF93RZv7210eKzxfG7V8BhLtcqg0';
 
     var imageIdxs = [];
     for (var idx = 0; idx < rows * cols; idx++) {
         imageIdxs.push(Math.floor(idx / 2));
     }
-    console.log(imageIdxs);
     imageIdxs = shuffle(imageIdxs);
-    console.log(imageIdxs);
+
+    function pushImages() {
+        $.ajax({
+            url: imageUrls,
+            method: 'GET'
+        }).then(function(response) {
+            imageIdxs.push(response.data.images.downsized_large.url);
+        })
+    };
 
     var $container = $('.container');
     for (var row = 0; row < rows; row++) {
