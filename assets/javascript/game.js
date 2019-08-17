@@ -2,11 +2,11 @@
 var counter = 30;
 var $span = $('#timer');
 
-$span.text(counter);
-
 //Alerted the Score;
-//Not really understand this part;
+//Not really understand this var;
 var alertedScore = false;
+
+$span.text(counter);
 
 function decreaseTime() {
     if ((counter == 0) && (alertedScore == false)) {
@@ -24,6 +24,22 @@ function decreaseTime() {
 }
 
 var interval = setInterval(decreaseTime, 1 * 1000);
+
+// The function to ask their name;
+var userName;
+
+$('button').on('click', function() {
+    // Input the user names;
+    userName = $('#userName').val();
+
+    $('.container').removeClass('hide');
+    $('form').addClass('hide');
+
+    $('#userNameGoesHere').text(userName);
+    $('#h2UserNameGoesHere').removeClass('hide');
+
+    event.preventDefault();
+});
 
 // Score Countdown;
 var score = 0;
@@ -83,13 +99,16 @@ $('.imgContainer').on('click', function() {
                         alert('Your score is ' + score);
                         alertedScore = true;
 
+                        // Let the timer stops;
                         clearInterval(interval);
                     }
                 }
+                // Refresh;
                 firstSrc = undefined;
                 secondSrc = undefined;
             }
-        }, 650);
+            // The Speed when the cards turn;
+        }, 750);
     };
     $img.removeClass('hide');
 });
