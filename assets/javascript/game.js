@@ -17,27 +17,43 @@ function decreaseTime() {
 var interval = setInterval(decreaseTime, 1 * 1000);
 
 // Click Function; 
-// After the user clicks on two divs, check if those images are equal;
 
-var first;
-var second;
+var firstSrc;
+var secondSrc;
+
+var $firstImg;
+var $secondImg;
 
 $('.imgContainer').on('click', function() {
+
+    clearInterval(timer);
+
     var $img = $(this).children().eq(0);
 
     var src = $img.attr('src');
 
-    if (first == undefined) {
-        first = src;
-    } else if (second == undefined) {
-        second = src;
-    }
+    // After the user clicks on two divs, check if those images are equal;
 
-    if ((first != undefined) && (second != undefined)) {
-        console.log(first == second);
-        first = undefined;
-        second = undefined;
+    if (firstSrc == undefined) {
+        firstSrc = src;
+        $firstImg = $img;
+    } else if (secondSrc == undefined) {
+        secondSrc = src;
+        $secondImg = $img;
     }
+    // If the last two images clicked on match, it would keep them turned over; else, keep them hidden; 
+    var timer = setTimeout(function() {
+
+        if ((firstSrc != undefined) && (secondSrc != undefined)) {
+            if (firstSrc != secondSrc) {
+                $firstImg.addClass('hide');
+                $secondImg.addClass('hide');
+            };
+
+            firstSrc = undefined;
+            secondSrc = undefined;
+        }
+    }, 650);
 
     $img.removeClass('hide');
 });
