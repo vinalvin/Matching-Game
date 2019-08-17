@@ -20,16 +20,20 @@ h1 {
     margin-bottom: 15px;
 }
 
-.row div{
+.row div {
     background: #2280e7;
-    border:2px solid #e8b10e;
+    border: 2px solid #e8b10e;
     margin-bottom: 20px;
     border-radius: 10px;
 }
 
-.row div, img {
-    width: 123px;
-    height: 100px;
+.row div,
+img {
+    /* width: 123px;
+    height: 100px; */
+    width: 125px;
+    height: 118px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -41,4 +45,8 @@ h1 {
     bottom: 0;
     width: 100%;
     padding: 3px;
+}
+
+.hide {
+    display: none;
 }

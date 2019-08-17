@@ -1,3 +1,4 @@
+// Timer;
 var counter = 30;
 var $span = $('h2 span');
 
@@ -15,7 +16,9 @@ function decreaseTime() {
 
 var interval = setInterval(decreaseTime, 1 * 1000);
 
-var openedCards = [];
+// Click Function; 
+// After the user clicks on two divs, check if those images are equal;
+
 var first;
 var second;
 
@@ -36,39 +39,5 @@ $('.imgContainer').on('click', function() {
         second = undefined;
     }
 
-    function pairTwo() {
-        openedCards.push(this);
-        var cards = openedCards.length;
-        if (cards === 2) {
-            if (openedCards[0].type === openedCards[1].type) {
-                matched();
-            } else {
-                unmatched();
-            }
-        }
-    };
-
-    function matched() {
-        openedCards[0].classList.add("match", "disabled");
-        openedCards[1].classList.add("match", "disabled");
-        openedCards[0].classList.remove("show", "open");
-        openCards = [];
-    }
-
-    function unmatched() {
-        opened[0].classList.add("unmatched");
-        opened[1].classList.add("unmatched");
-    }
-
-    // } else if (first != second) {
-    //     unmatched();
-    // }
-
-    // function unmatched() {
-    //     $('img').addClass('hide');
-    //     $('img').addClass('hide');
-    // }
-
     $img.removeClass('hide');
-
 });

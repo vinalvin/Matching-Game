@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Matching Game</title>
+    <title>Matching-Game</title>
     <link rel="icon" type="images/x-icon" href="http://icons.iconarchive.com/icons/sbstnblnd/plateau/512/Apps-colors-icon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Monoton|Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
@@ -14,60 +14,74 @@
 
 <body>
     <h1>Matching Game</h1>
+    <div class="timer">Time Remaining: <span>30</span> seconds</div>
 
-    <h2>Timer: <span></span></h2>
+    <form id="nameForm">
+        <lable>Name</lable>
+        <input id="userName" type="text">
 
-    <div class="row">
-        <div class="imgContainer">
+        <select id="level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+
+        <button id="btnSubmit">Submit</button>>
+    </form>
+
+    <div class="row justify-content-center block">
+        <div class="col-xs-3 row-height imgContainer">
             <img class="hide" src="https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height imgContainer">
             <img class="hide" src="https://media2.giphy.com/media/UtvkbCvOJCJtC/200w.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media2.giphy.com/media/k8kA7AOLFVohq/200.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media1.giphy.com/media/cQz5MLlnP5rfa/200.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200.webp">
         </div>
     </div>
 
-    <div class="row">
-        <div class="imgContainer">
+    <div class="row justify-content-center block">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media2.giphy.com/media/UtvkbCvOJCJtC/200w.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media3.giphy.com/media/3ov9k4e03yTNRWTgYM/200w.webp?cid=790b7611fc7ad1db280bdc6f9bb012ccc148ab3e0adda710&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media3.giphy.com/media/9MraLzmkWiZqM/200w.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media1.giphy.com/media/cQz5MLlnP5rfa/200.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200.webp">
         </div>
     </div>
 
-    <div class="row">
-        <div class="imgContainer">
+    <div class="row justify-content-center block">
+        <div class="col-xs-1 row-height">
             <img class="hide" src="https://media3.giphy.com/media/3ov9k4e03yTNRWTgYM/200w.webp?cid=790b7611fc7ad1db280bdc6f9bb012ccc148ab3e0adda710&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media2.giphy.com/media/k8kA7AOLFVohq/200.webp?cid=790b7611361e9dda43fa5d4ceadefc1d6ffba77218c5b525&rid=200.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media3.giphy.com/media/9MraLzmkWiZqM/200w.webp?cid=790b7611561f26b842f49393a2fbf4e32a0542969b591acd&rid=200w.webp">
         </div>
-        <div class="imgContainer">
+        <div class="col-xs-3 row-height">
             <img class="hide" src="https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp">
         </div>
     </div>
-
-    <div class="footer">© Copyright 2019</div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
-    <script src="assets/javascript/game.js"></script>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="assets/javascript/game.js"></script>
+
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+<script>
+</script>
 
 </html>
