@@ -17,7 +17,7 @@
     <h3>Timer: <span id="timer"></span></h3>
     <h3>Score: <span id="score"></span></h3>
 
-    <h3 id="h2UserNameGoesHere" class="hide">How are you, <span id="userNameGoesHere"></span>?</h3>
+    <h3 id="h2UserNameGoesHere" class="hide">How fast you can get to match those, <span id="userNameGoesHere"></span>?</h3>
 
     <form id="formName">
         <lable>Username</lable>
@@ -95,31 +95,36 @@
 
     <div class="footer">© Copyright 2019</div>
 
-
-    <script>
-        src = "https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"
-    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script>
-        // Setup Firebase;
+    <script type="text/javascript">
         var firebaseConfig = {
-            apiKey: "AIzaSyCbb2wOPgqTLzBV_kwpeFlnuIta9oN8pdg",
-            authDomain: "matching-game-56ad7.firebaseapp.com",
-            databaseURL: "https://matching-game-56ad7.firebaseio.com",
-            projectId: "matching-game-56ad7",
-            storageBucket: "matching-game-56ad7.appspot.com",
-            messagingSenderId: "235534445416",
-            appId: "1:235534445416:web:f70e82fc94bb6d90"
+            apiKey: "AIzaSyBIhWAbx75eQKlBdJrHjhrWaj6Jzk4OvXo",
+            authDomain: "project-f384a.firebaseapp.com",
+            databaseURL: "https://project-f384a.firebaseio.com",
+            projectId: "project-f384a",
+            storageBucket: "",
+            messagingSenderId: "554667680468",
+            appId: "1:554667680468:web:6ae2bccf17864595"
         };
-
-        // Initialize Firebase;
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        var db = firebase.database()
+        var formName;
 
-        // Reference to actual database;
-        var database = firebase.database();
+        function pushName() {
+            formName = $("#userName").val()
+            db.ref().push({
+                name: formName
+            })
+        }
+        $(document).on("click", "#btnSubmit", function() {
+            pushName()
+        })
     </script>
 
     <script src="assets/javascript/game.js"></script>
