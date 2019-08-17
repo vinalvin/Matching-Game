@@ -8,25 +8,46 @@
     <title>Matching Game</title>
     <link rel="icon" type="images/x-icon" href="http://icons.iconarchive.com/icons/sbstnblnd/plateau/512/Apps-colors-icon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Monoton|Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Love+Ya+Like+A+Sister|Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <h1>Matching Game</h1>
+    <h3>Timer: <span id="timer"></span></h3>
+    <h3>Score: <span id="score"></span></h3>
 
-    <h2>Timer: <span id="timer"></span></h2>
-    <h2>Score: <span id="score"></span></h2>
+    <h3 id="h2UserNameGoesHere" class="hide">How are you, <span id="userNameGoesHere"></span>?</h3>
 
-    <h2 id="h2UserNameGoesHere" class="hide">How are you, <span id="userNameGoesHere"></span>?</h2>
+    <form id="formName">
+        <lable>Username</lable>
+        <input id="userName" type="text" placeholder="Your name">
 
-    <form>
-        <input type="text" id="userName" placeholder="Your name?">
-        <button>Start</button>
+        <select id="level" required>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+
+        <button id="btnSubmit">Start</button>
     </form>
 
+    <table id="highScores" class="table">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>time left</th>
+                <th>score</th>
+                <th>difficulty</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
     <div class="container hide">
-        <div class="row">
+        <!-- <div class="row">
             <div class="imgContainer">
                 <img class="hide" src="https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp">
             </div>
@@ -69,14 +90,38 @@
             <div class="imgContainer">
                 <img class="hide" src="https://media0.giphy.com/media/l0MYNJC1oGwKLfqso/200.webp?cid=790b7611d34c1c000e51269097b60ed2641e1d871812a2fc&rid=200.webp">
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="footer">© Copyright 2019</div>
 
+
+    <script>
+        src = "https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+
+    <script>
+        // Setup Firebase;
+        var firebaseConfig = {
+            apiKey: "AIzaSyCbb2wOPgqTLzBV_kwpeFlnuIta9oN8pdg",
+            authDomain: "matching-game-56ad7.firebaseapp.com",
+            databaseURL: "https://matching-game-56ad7.firebaseio.com",
+            projectId: "matching-game-56ad7",
+            storageBucket: "matching-game-56ad7.appspot.com",
+            messagingSenderId: "235534445416",
+            appId: "1:235534445416:web:f70e82fc94bb6d90"
+        };
+
+        // Initialize Firebase;
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to actual database;
+        var database = firebase.database();
+    </script>
+
     <script src="assets/javascript/game.js"></script>
 </body>
 
