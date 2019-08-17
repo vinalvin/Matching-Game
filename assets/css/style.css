@@ -50,3 +50,7 @@ img {
 .hide {
     display: none;
 }
+
+.noClickAllowed {
+    pointer-events: none;
+}

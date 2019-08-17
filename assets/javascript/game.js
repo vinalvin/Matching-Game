@@ -1,10 +1,19 @@
 // Timer;
 var counter = 30;
-var $span = $('h2 span');
+var $span = $('#timer');
 
 $span.text(counter);
 
+//Alerted the Score;
+//Not really understand this part;
+var alertedScore = false;
+
 function decreaseTime() {
+    if ((counter == 0) && (alertedScore == false)) {
+        alert('Your score is ' + score);
+        alertedScore = true;
+    }
+
     counter--;
     $span.text(counter);
 
@@ -16,8 +25,14 @@ function decreaseTime() {
 
 var interval = setInterval(decreaseTime, 1 * 1000);
 
-// Click Function; 
+// Score Countdown;
+var score = 0;
+$('#score').text(score);
 
+// How many pair to win;
+var pairsToWin = 6;
+
+// Click Function; 
 var firstSrc;
 var secondSrc;
 
@@ -26,34 +41,55 @@ var $secondImg;
 
 $('.imgContainer').on('click', function() {
 
-    clearInterval(timer);
+    // If either one is empty;
+    if ((firstSrc == undefined) || (secondSrc == undefined)) {
 
-    var $img = $(this).children().eq(0);
+        clearInterval(timer);
 
-    var src = $img.attr('src');
+        var $img = $(this).children().eq(0);
 
-    // After the user clicks on two divs, check if those images are equal;
+        // Disable clicking on the last image you clicked on
+        $img.addClass('noClickAllowed');
 
-    if (firstSrc == undefined) {
-        firstSrc = src;
-        $firstImg = $img;
-    } else if (secondSrc == undefined) {
-        secondSrc = src;
-        $secondImg = $img;
-    }
-    // If the last two images clicked on match, it would keep them turned over; else, keep them hidden; 
-    var timer = setTimeout(function() {
+        var src = $img.attr('src');
 
-        if ((firstSrc != undefined) && (secondSrc != undefined)) {
-            if (firstSrc != secondSrc) {
-                $firstImg.addClass('hide');
-                $secondImg.addClass('hide');
-            };
-
-            firstSrc = undefined;
-            secondSrc = undefined;
+        // After the user clicks on two divs, check if those images are equal;
+        if (firstSrc == undefined) {
+            firstSrc = src;
+            $firstImg = $img;
+        } else if (secondSrc == undefined) {
+            secondSrc = src;
+            $secondImg = $img;
         }
-    }, 650);
+        // If the last two images clicked on match, it would keep them turned over; else, keep them hidden; 
+        var timer = setTimeout(function() {
 
+            // Both are not empty;
+            if ((firstSrc != undefined) && (secondSrc != undefined)) {
+                if (firstSrc != secondSrc) {
+                    $firstImg.addClass('hide');
+                    $secondImg.addClass('hide');
+
+                    // Disable clicking on the last image you clicked on
+                    $firstImg.removeClass('noClickAllowed');
+                    $secondImg.removeClass('noClickAllowed');
+                } else {
+                    score++;
+                    $('#score').text(score);
+
+                    // Position to win the game;
+                    if ((score == pairsToWin) && (alertedScore == false)) {
+
+                        alert('Your score is ' + score);
+                        alertedScore = true;
+
+                        clearInterval(interval);
+                    }
+                }
+                firstSrc = undefined;
+                secondSrc = undefined;
+            }
+        }, 650);
+    };
     $img.removeClass('hide');
 });
